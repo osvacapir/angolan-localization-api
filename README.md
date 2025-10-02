@@ -33,7 +33,7 @@ Uma API RESTful moderna e completa para dados de localização de Angola, fornec
 
 1. **Clone o repositório**
 ```bash
-git clone https://github.com/angola-dev/angolan-localization-api.git
+git clone https://github.com/osvacapir/angolan-localization-api.git
 cd angolan-localization-api
 ```
 
