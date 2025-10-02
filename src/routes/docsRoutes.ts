@@ -15,7 +15,7 @@ const swaggerOptions = {
       contact: {
         name: process.env.SWAGGER_CONTACT_NAME || 'Comunidade de Desenvolvedores Angolanos',
         email: process.env.SWAGGER_CONTACT_EMAIL || 'contato@angola-dev.com',
-        url: process.env.SWAGGER_CONTACT_URL || 'https://github.com/angola-dev/localization-api',
+        url: process.env.SWAGGER_CONTACT_URL || 'https://github.com/angola-dev/angola-localization-api',
       },
       license: {
         name: 'MIT',
@@ -28,7 +28,7 @@ const swaggerOptions = {
         description: 'Servidor de Desenvolvimento',
       },
       {
-        url: 'https://api.angola-localization.com/api',
+        url: 'https://api.angola-localization-api.com/api',
         description: 'Servidor de Produção',
       },
     ],
