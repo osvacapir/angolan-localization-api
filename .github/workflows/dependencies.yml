@@ -1,0 +1,36 @@
+name: Dependencies
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Weekly on Monday
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  dependencies:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Check for outdated packages
+      run: npm outdated
+
+    - name: Check for security vulnerabilities
+      run: npm audit --audit-level moderate
+
+    - name: Check for unused dependencies
+      run: npx depcheck
+
+    - name: Check for duplicate dependencies
+      run: npx npm-check-duplicates

@@ -1,0 +1,210 @@
+# Cursor Rules - API de Localização de Angola
+
+## Contexto do Projeto
+Este é um projeto Node.js + TypeScript + Express para uma API RESTful de localização de Angola. O projeto fornece dados de províncias e municípios angolanos para a comunidade de desenvolvedores locais.
+
+## Tecnologias Principais
+- Node.js 18+ com TypeScript
+- Express.js para API REST
+- PostgreSQL com Prisma ORM
+- Redis para cache
+- Docker para containerização
+- Swagger para documentação
+- Jest para testes
+
+## Padrões de Código
+
+### TypeScript
+- Use TypeScript strict mode
+- Sempre defina tipos explícitos para parâmetros e retornos
+- Use interfaces para estruturas de dados
+- Prefira `interface` sobre `type` para objetos
+- Use enums para valores constantes
+- Evite `any`, use `unknown` quando necessário
+
+### Estrutura de Arquivos
+- Controllers em `src/controllers/`
+- Models/Entities em `src/models/` (Prisma)
+- Routes em `src/routes/`
+- Middleware em `src/middleware/`
+- Utils em `src/utils/`
+- Types em `src/types/`
+- Config em `src/config/`
+
+### Nomenclatura
+- Use PascalCase para classes e interfaces
+- Use camelCase para variáveis e funções
+- Use UPPER_SNAKE_CASE para constantes
+- Use kebab-case para arquivos
+- Prefixe interfaces com `I` quando necessário
+- Use verbos para funções: `getUser`, `createProvince`, `updateMunicipality`
+
+### API Design
+- Use RESTful conventions
+- Retorne sempre `ApiResponse<T>` format
+- Use códigos HTTP apropriados
+- Implemente paginação para listas
+- Use validação com express-validator
+- Documente endpoints com Swagger
+
+### Banco de Dados
+- Use Prisma ORM
+- Defina schemas em `prisma/schema.prisma`
+- Use migrations para mudanças de schema
+- Implemente relacionamentos adequados
+- Use índices para performance
+
+### Cache
+- Use Redis para cache
+- Implemente TTL apropriado
+- Use chaves descritivas: `provinces:page:1:limit:15`
+- Limpe cache quando dados mudarem
+
+### Segurança
+- Valide todas as entradas
+- Use JWT para autenticação
+- Implemente rate limiting
+- Use headers de segurança
+- Sanitize dados de entrada
+
+### Testes
+- Escreva testes para todas as funcionalidades
+- Use Jest + Supertest
+- Teste casos de sucesso e erro
+- Mantenha cobertura > 80%
+- Use mocks para dependências externas
+
+### Error Handling
+- Use try-catch em operações async
+- Log erros com contexto
+- Retorne erros padronizados
+- Use middleware de error handling
+
+### Logging
+- Use Winston para logs
+- Log nível apropriado (info, warn, error)
+- Inclua contexto relevante
+- Use structured logging
+
+## Convenções Específicas do Projeto
+
+### Dados de Angola
+- Use dados oficiais das 18 províncias
+- Mantenha 164 municípios atualizados
+- Use coordenadas GPS precisas
+- Inclua informações demográficas
+
+### Respostas da API
+```typescript
+interface ApiResponse<T> {
+  success: boolean;
+  message: string;
+  data?: T;
+  meta?: {
+    page?: number;
+    limit?: number;
+    total?: number;
+    totalPages?: number;
+  };
+}
+```
+
+### Validação
+- Use express-validator para validação
+- Valide todos os inputs
+- Retorne mensagens em português
+- Use middleware de validação
+
+### Cache Strategy
+- Cache consultas frequentes (provinces, municipalities)
+- TTL de 1 hora para dados estáticos
+- TTL de 30 minutos para buscas
+- Limpe cache em operações de escrita
+
+### Docker
+- Use multi-stage builds
+- Otimize tamanho da imagem
+- Use .dockerignore
+- Configure health checks
+
+## Comandos Úteis
+
+### Desenvolvimento
+```bash
+npm run dev          # Inicia servidor de desenvolvimento
+npm run build        # Compila TypeScript
+npm run test         # Executa testes
+npm run lint         # Executa ESLint
+npm run format       # Formata código
+```
+
+### Banco de Dados
+```bash
+npm run db:generate  # Gera cliente Prisma
+npm run db:push      # Aplica mudanças
+npm run db:seed      # Popula dados
+npm run db:studio    # Abre Prisma Studio
+```
+
+### Docker
+```bash
+docker-compose up -d  # Inicia serviços
+docker-compose logs   # Ver logs
+docker-compose down   # Para serviços
+```
+
+## Regras de Commit
+- Use conventional commits
+- Formato: `type(scope): description`
+- Exemplos:
+  - `feat(api): add province search endpoint`
+  - `fix(cache): resolve Redis connection issue`
+  - `docs(readme): update installation instructions`
+
+## Considerações de Performance
+- Use paginação para listas grandes
+- Implemente cache inteligente
+- Use índices de banco adequados
+- Monitore queries lentas
+- Otimize payloads de resposta
+
+## Considerações de Segurança
+- Valide todos os inputs
+- Use HTTPS em produção
+- Implemente rate limiting
+- Monitore tentativas de acesso
+- Mantenha dependências atualizadas
+
+## Documentação
+- Documente todos os endpoints
+- Use Swagger/OpenAPI
+- Mantenha README atualizado
+- Documente decisões arquiteturais
+- Inclua exemplos de uso
+
+## Comunidade
+- Código em português quando apropriado
+- Comentários em português
+- Mensagens de erro em português
+- Documentação em português
+- Foco na comunidade angolana
+
+## Linting e Formatação
+- Use ESLint com regras TypeScript
+- Use Prettier para formatação
+- Configure pre-commit hooks
+- Mantenha código consistente
+
+## Monitoramento
+- Implemente health checks
+- Use métricas de performance
+- Monitore logs de erro
+- Configure alertas apropriados
+
+## Backup e Recuperação
+- Configure backup automático
+- Teste procedimentos de recuperação
+- Documente processos de restore
+- Mantenha backups seguros
+
+Lembre-se: Este projeto é para a comunidade angolana, então sempre considere a usabilidade e acessibilidade para desenvolvedores locais.

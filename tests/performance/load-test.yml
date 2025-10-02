@@ -1,0 +1,57 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "Warm up"
+    - duration: 120
+      arrivalRate: 10
+      name: "Ramp up load"
+    - duration: 300
+      arrivalRate: 20
+      name: "Sustained load"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+  plugins:
+    metrics-by-endpoint:
+      useOnlyRequestNames: true
+
+scenarios:
+  - name: "API Health Check"
+    weight: 10
+    flow:
+      - get:
+          url: "/health"
+
+  - name: "Get Provinces"
+    weight: 30
+    flow:
+      - get:
+          url: "/api/provinces"
+          qs:
+            page: 1
+            limit: 10
+
+  - name: "Get Municipalities"
+    weight: 30
+    flow:
+      - get:
+          url: "/api/municipalities"
+          qs:
+            page: 1
+            limit: 10
+
+  - name: "Search API"
+    weight: 20
+    flow:
+      - get:
+          url: "/api/search"
+          qs:
+            q: "Luanda"
+
+  - name: "Get Stats"
+    weight: 10
+    flow:
+      - get:
+          url: "/api/stats"

@@ -1,0 +1,51 @@
+name: Performance Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  performance:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Start services
+      run: |
+        docker-compose up -d postgres redis
+        sleep 30
+
+    - name: Run database migrations
+      run: |
+        npm run db:generate
+        npm run db:push
+        npm run db:seed
+
+    - name: Start application
+      run: |
+        npm run build
+        npm start &
+        sleep 10
+
+    - name: Run performance tests
+      run: |
+        npm install -g artillery
+        artillery run tests/performance/load-test.yml
+
+    - name: Upload performance results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: performance-results
+        path: artillery-report.html
