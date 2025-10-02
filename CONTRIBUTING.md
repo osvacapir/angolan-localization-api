@@ -8,11 +8,11 @@ Obrigado por considerar contribuir para a API de Localização de Angola! Este g
 
 ```bash
 # Fork o repositório no GitHub, depois clone
-git clone https://github.com/angola-dev/angola-localization-api.git
-cd angola-localization-api
+git clone https://github.com/angola-dev/angolan-localization-api.git
+cd angolan-localization-api
 
 # Adicione o repositório original como upstream
-git remote add upstream https://github.com/angola-dev/angola-localization-api.git
+git remote add upstream https://github.com/angola-dev/angolan-localization-api.git
 ```
 
 ### 2. Configuração do Ambiente

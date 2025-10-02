@@ -4,7 +4,7 @@ services:
   # PostgreSQL Database
   postgres:
     image: postgres:15-alpine
-    container_name: angola-postgres-prod
+    container_name: angolan-postgres-prod
     restart: unless-stopped
     environment:
       POSTGRES_DB: angola_localization
@@ -24,7 +24,7 @@ services:
   # Redis Cache
   redis:
     image: redis:7-alpine
-    container_name: angola-redis-prod
+    container_name: angolan-redis-prod
     restart: unless-stopped
     command: redis-server --requirepass ${REDIS_PASSWORD}
     volumes:
@@ -42,7 +42,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
-    container_name: angola-api-prod
+    container_name: angolan-api-prod
     restart: unless-stopped
     environment:
       NODE_ENV: production
@@ -69,7 +69,7 @@ services:
   # Nginx Reverse Proxy
   nginx:
     image: nginx:alpine
-    container_name: angola-nginx-prod
+    container_name: angolan-nginx-prod
     restart: unless-stopped
     ports:
       - "80:80"

@@ -33,8 +33,8 @@ Uma API RESTful moderna e completa para dados de localização de Angola, fornec
 
 1. **Clone o repositório**
 ```bash
-git clone https://github.com/angola-dev/angola-localization-api.git
-cd angola-localization-api
+git clone https://github.com/angola-dev/angolan-localization-api.git
+cd angolan-localization-api
 ```
 
 2. **Instale as dependências**
@@ -255,7 +255,7 @@ Procuramos issues marcadas com `good first issue` para novos colaboradores:
 ## 📊 Estrutura do Projeto
 
 ```
-angola-localization-api/
+angolan-localization-api/
 ├── src/
 │   ├── controllers/     # Controladores da API
 │   ├── middleware/      # Middlewares personalizados
@@ -341,7 +341,7 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 - **Issues**: [GitHub Issues](../../issues)
 - **Discussões**: [GitHub Discussions](../../discussions)
-- **Email**: contato@angola-localization-api.com
+- **Email**: contato@angolan-localization-api.com
 
 ## 🌟 Contribuidores
 

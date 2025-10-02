@@ -1,5 +1,5 @@
 {
-  "name": "angola-localization-api",
+  "name": "angolan-localization-api",
   "version": "1.0.0",
   "description": "API RESTful de Localização de Angola - Dados de províncias e municípios",
   "main": "dist/index.js",
