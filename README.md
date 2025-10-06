@@ -351,4 +351,4 @@ Obrigado a todos os contribuidores que tornam este projeto possível!
 
 ---
 
-**Feito com ❤️ pela comunidade angolana de desenvolvedores**
+**Feito com ❤️ por Osvaldo Capir**
